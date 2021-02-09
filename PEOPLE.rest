@@ -1,0 +1,20 @@
+@baseUrl=http://localhost:9000
+
+GET {{baseUrl}}/people/gethome
+###
+
+POST {{baseUrl}}/people/getuser
+Content-Type: application/json
+
+{
+    "name": "Niv Jain"
+}
+###
+POST {{baseUrl}}/people/adduser
+Content-Type: application/json
+
+{
+    "name": "Niv Jain",
+    "age": 4,
+    "city": "Singapore"
+}

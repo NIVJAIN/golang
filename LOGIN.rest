@@ -1,0 +1,30 @@
+@baseUrl=http://localhost:9000
+
+# @name login
+POST {{baseUrl}}/user/login
+Content-Type: application/json
+
+{
+    "email": "sripal.jain@gmail.com",
+    "password": "$iloveGermany1980"
+}
+###
+@authToken = {{login.response.body.accessToken}}
+@refreshToken = {{login.response.body.refrestToken}}
+###
+# @name createComment
+GET {{baseUrl}}/user/gethome
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+###
+POST {{baseUrl}}/user/refresh
+Content-Type: application/json
+
+{
+    "refresh_token": "{{refreshToken}}"
+}
+###
+GET {{baseUrl}}/user/logout
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+

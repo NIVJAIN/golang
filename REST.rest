@@ -1,0 +1,66 @@
+@baseUrl=http://localhost:9000
+###
+# @name login
+POST {{baseUrl}}/user/login
+Content-Type: application/json
+
+{
+    "email": "sripal.jain@gmail.com",
+    "password": "$iloveGermany1980"
+}
+###
+
+@authToken = {{login.response.body.accessToken}}
+@refreshToken = {{login.response.body.refrestToken}}
+###
+
+GET {{baseUrl}}/user/gethome
+Authorization: Bearer {{authToken}}
+###
+POST {{baseUrl}}/user/signup
+Content-Type: application/json
+
+{
+    "name": "NivJain",
+    "email": "5pinky.jain@gmail.com",
+    "password": "$iloveGermany1980"
+}
+###
+POST {{baseUrl}}/user/getuser
+Content-Type: application/json
+
+{
+    "email": "pia.jain@gmail.com"
+}
+###
+POST {{baseUrl}}/user/createpeople
+Content-Type: application/json
+
+{
+    "name": "Jain8",
+    "age": 41,
+    "city": "Singapore",
+    "email": "2sripal.jain@gmail.com"
+}
+###
+
+GET {{baseUrl}}/user/query?filtername=name&filtervalue=Jain5&fieldname=city&fieldvalue=Germany
+###
+
+GET {{baseUrl}}/user/updatefield?id=5f8d5ea901b19460e735f888&fieldname=name&fieldvalue=Sripal
+###
+GET {{baseUrl}}/user/emailfield?email=sripal.jain@gmail.com&fieldname=name&fieldvalue=SripalJain
+###
+GET {{baseUrl}}/user/querydates?filtername=nanounix&startdate=2009-12-25&todate=2020-10-27&limit=5
+###
+
+POST {{baseUrl}}/user/update
+Content-Type: application/json
+
+{
+    "email": "sripal.jain@gmail.com",
+    "fieldname": "city",
+    "fieldvalue": "Rajasthan"
+}
+###
+

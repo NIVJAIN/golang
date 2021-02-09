@@ -1,0 +1,20 @@
+@baseUrl=http://localhost:9000
+
+
+POST {{baseUrl}}/rabbit/getuser
+Content-Type: application/json
+
+{
+    "email": "pia.jain@gmail.com"
+}
+###
+
+POST {{baseUrl}}/rabbit/push
+Content-Type: application/json
+
+{
+    "email": "pia.jain@gmail.com",
+    "name" : "Pia jain",
+    "age" : 7,
+    "city": "singapore"
+}

@@ -1,0 +1,87 @@
+@baseUrl=http://localhost:9000
+
+
+POST {{baseUrl}}/user/submit not in use
+Content-Type: application/json
+
+{
+    "username": "foo",
+    "guests": {
+        "person": [
+            {
+                "firstname": "foobar",
+                "lastname": "barfoo"
+            },
+            {
+                "firstname": "foofoo",
+                "lastname": "barbar"
+            },
+            {
+                "firstname": "foofoo3",
+                "lastname": "barbar4"
+            }
+        ]
+    },
+    "roomType": "dd",
+    "checkinDate": "dd",
+    "checkoutDate": "dd"
+}
+###
+POST {{baseUrl}}/user/submit
+Content-Type: application/json
+
+{
+        "person": [
+            {
+                "firstname": "foobar",
+                "lastname": "barfoo"
+            },
+            {
+                "firstname": "foofoo",
+                "lastname": "barbar"
+            },
+            {
+                "firstname": "foofoo3",
+                "lastname": "barbar4"
+            }
+        ]
+}
+###
+
+POST {{baseUrl}}/user/submit
+Content-Type: application/json
+
+ [
+    {
+        "firstname": "foobar",
+        "lastname": "barfoo"
+    },
+    {
+        "firstname": "foofoo",
+        "lastname": "barbar"
+    },
+    {
+        "firstname": "foofoo3",
+        "lastname": "barbar4"
+    }
+]
+###
+POST {{baseUrl}}/user/submit
+Content-Type: application/json
+
+[
+    {
+        "propName": "Jain",
+        "propValue": "signapore"
+    },
+    {
+        "propName": "Pia",
+        "propValue": "signapore"
+    },
+    {
+        "propName": "Niv",
+        "propValue": "signapore"
+    }
+
+]
+###
