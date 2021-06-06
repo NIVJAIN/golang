@@ -52,6 +52,9 @@ func ConnectDB(l map[string]*logrus.Logger) (*mongo.Client, context.Context, con
 	username := os.Getenv("MONGODB_USERNAME")
 	password := os.Getenv("MONGODB_PASSWORD")
 	clusterEndpoint := os.Getenv("MONGODB_ENDPOINT")
+	// MONGODB_USERNAME="root"
+	// MONGODB_PASSWORD="$iloveblockchain"
+	// MONGODB_ENDPOINT="localhost:27017"
 	// log.Println("DOTENV...", username, password, clusterEndpoint)
 	// logras = l["info"]
 	// logras.Info("DOTENV...", username, password, clusterEndpoint)

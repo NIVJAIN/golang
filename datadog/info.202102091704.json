@@ -1,6 +1,0 @@
-{"function":"main","level":"info","line":"7-ginInterfaceMongoDBRabbitMQ-JWT-RTL-KAFKA/main.go:64","msg":"dddd","time":"2021-02-09T17:04:43+08:00"}
-{"function":"ConnectDB","level":"info","line":"db/mongodb.go:75","msg":"Connected to MongoDB!","time":"2021-02-09T17:04:44+08:00"}
-{"function":"InitRedis","level":"info","line":"db/mongodb.go:132","msg":"Redis connections success... PONG","time":"2021-02-09T17:04:44+08:00"}
-{"function":"KafkaInitConnection","level":"info","line":"kafka/kafka.go:52","msg":"Kafka Connection Succesfull...","time":"2021-02-09T17:04:44+08:00"}
-{"function":"Connect","level":"info","line":"rabbitmq/init_rabbitmq_connection.go:102","msg":"RabbitURL:amqp://guest:guest@localhost:5672/","time":"2021-02-09T17:04:44+08:00"}
-{"function":"GetRabbitMQConnection","level":"info","line":"7-ginInterfaceMongoDBRabbitMQ-JWT-RTL-KAFKA/main.go:160","msg":"RabbitMQ connection success...","time":"2021-02-09T17:04:44+08:00"}
