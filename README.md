@@ -35,10 +35,23 @@ cd docker-compose up -d
 
 ## RabbitMQ
 ```
+exchange = my-exchange 
+exchange-type = direct
+queues  = [queue-1]
+BindQue 
+
+exchange-name = ("my-producer", "my-exchange", []string{"queue-1"}, logpool)
 RABBIT.REST
 click send request POST {{baseUrl}}/rabbit/push
 cd 9-rabbitmq-con
+
 go run consumer.go
+messageHandler.....
+messageHandler.....
+2021/06/06 10:47:21 Got message from queue  queue-1
+gotmessage--- {"name":"Pia jain","Age":7,"city":"singapore","email":"pia.jain@gmail.com"} []uint8
+2021/06/06 10:47:21 Got message from queue  queue-2
+gotmessage--- {"name":"Pia jain","Age":7,"city":"singapore","email":"pia.jain@gmail.com"} []uint8
 
 ```
 

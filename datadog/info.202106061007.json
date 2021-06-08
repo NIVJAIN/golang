@@ -1,2 +1,0 @@
-{"function":"KafkaPublish","level":"info","line":"kafka/kafka.go:74","msg":"Partition:  0","time":"2021-06-06T10:07:03+08:00"}
-{"function":"KafkaPublish","level":"info","line":"kafka/kafka.go:75","msg":"Offset:  2","time":"2021-06-06T10:07:03+08:00"}
