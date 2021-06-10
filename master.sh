@@ -28,13 +28,6 @@ PREFIX=$2
 MONGO=mongolang
 REDIS=redisgolang
 declare -a CONTAINERS=($MONGO, $REDIS)
-## now loop through the above array
-for i in "${CONTAINERS[@]}"
-do
-   echo "$i"
-   # or do whatever with individual element of the array
-done
-
 
 SCRIPTDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 echo $SCRIPTDIR
@@ -48,13 +41,19 @@ if [ "$1" = "up" ]; then
     sh run.sh up
     popd
 
-    docker run -d --name mongodb \
-        -e MONGO_INITDB_ROOT_USERNAME=root \
-        -e MONGO_INITDB_ROOT_PASSWORD=iloveblockchain \
-        -p 27017:27017 \
-        $MONGO
-
-    docker run -itd --name $REDIS -p 6379:6379 redis
+    if [ "$( docker container inspect -f '{{.State.Status}}' $MONGO )" != "running" ]; then
+        docker run -d --name $MONGO \
+            -e MONGO_INITDB_ROOT_USERNAME=root \
+            -e MONGO_INITDB_ROOT_PASSWORD=iloveblockchain \
+            -p 27017:27017 \
+            mongo
+    fi
+    if [ "$( docker container inspect -f '{{.State.Status}}' $REDIS )" != "running" ]; then
+        docker run -itd --name $REDIS -p 6379:6379 redis
+    fi
+    sleep 5
+    # run the golang application by executing below script
+    sh bhag.sh
 fi
 
 if [ "$1" = "down" ]; then
@@ -67,12 +66,12 @@ if [ "$1" = "down" ]; then
     sh run.sh down
     popd
   
-    for container in "${CONTAINERS[@]}"
+    for i in "${CONTAINERS[@]}"
     do
         echo "$i"
-        if [ "$( docker container inspect -f '{{.State.Status}}' $container )" == "running" ]; then
+        if [ "$( docker container inspect -f '{{.State.Status}}' $i )" == "running" ]; then
             echo "running"
-            docker stop $container_name && docker rm $container
+            docker stop $i && docker rm $i
             # docker stop $(docker ps -q --filter ancestor=$container_name )
         fi
     done  
