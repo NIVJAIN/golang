@@ -60,7 +60,8 @@ func GetConnection(name string) *Connection {
 func (c *Connection) Connect() error {
 	var err error
 	// c.conn, err = amqp.Dial("amqp://guest:guest@localhost:5672/")
-	c.conn, err = amqp.Dial("amqp://localhost:5672")
+	// c.conn, err = amqp.Dial("amqp://localhost:5672")
+	c.conn, err = amqp.Dial("amqp://guest:guest@rabbitmq.aipo-imda.net")
 	// c.conn, err = amqp.Dial("amqp://guest:guest@rabbitmq:5672/")
 
 	if err != nil {

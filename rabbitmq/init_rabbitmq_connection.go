@@ -95,6 +95,7 @@ func (c *Connection) Connect() error {
 	// rabbitURL := "amqp://guest:guest@localhost:5672/" // Localhost works
 	var rabbitURL = ""
 	// rabbitURL := "amqp://jain:jain@18.140.220.74:5672//german" //Marcus doesnt work ,error on username passwordnot allowed works after adding vhost
+	// RABBIT_URL= "amqp://guest:guest@rabbitmq.aipo-imda.net" works
 	rabbitURL = os.Getenv("RABBIT_URL")
 	if rabbitURL == "" {
 		// rabbitURL = "amqp://jain:jain@18.140.220.74:5672//german"
