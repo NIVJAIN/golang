@@ -27,15 +27,16 @@ VERSION=$1
 PREFIX=$2
 MONGO=mongolang
 REDIS=redisgolang
+KAFKA_SWARM_CLUSTER_NAME=kafkacluster
 declare -a CONTAINERS=($MONGO, $REDIS)
 
 SCRIPTDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 echo $SCRIPTDIR
 
 if [ "$1" = "up" ]; then
-    pushd "$SCRIPTDIR/kafka-stack-docker-compose-master"
-    sh run.sh up
-    popd
+    # pushd "$SCRIPTDIR/kafka-stack-docker-compose-master"
+    # sh run.sh up
+    # popd
 
     pushd "$SCRIPTDIR/rabbitmq-cluster_docker_compose/cluster_conf"
     sh run.sh up
@@ -75,4 +76,17 @@ if [ "$1" = "down" ]; then
             # docker stop $(docker ps -q --filter ancestor=$container_name )
         fi
     done  
+fi
+
+if [ "$1" = "kafkaswarmu" ]; then
+    pushd "$SCRIPTDIR/kafka-stack-docker-compose-master"
+    docker swarm init
+    docker stack deploy --compose-file zk-multiple-kafka-multiple.yml $KAFKA_SWARM_CLUSTER_NAME
+    popd
+fi
+if [ "$1" = "kafkaswarmd" ]; then
+    pushd "$SCRIPTDIR/kafka-stack-docker-compose-master"
+    docker stack ls
+    docker stack rm $KAFKA_SWARM_CLUSTER_NAME
+    popd
 fi
