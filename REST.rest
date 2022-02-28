@@ -37,9 +37,9 @@ POST {{baseUrl}}/user/createpeople
 Content-Type: application/json
 
 {
-    "name": "Jain8",
+    "name": "Jain5",
     "age": 41,
-    "city": "Singapore",
+    "city": "Germany",
     "email": "2sripal.jain@gmail.com"
 }
 ###

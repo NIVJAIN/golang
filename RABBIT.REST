@@ -5,7 +5,7 @@ POST {{baseUrl}}/rabbit/getuser
 Content-Type: application/json
 
 {
-    "email": "pia.jain@gmail.com"
+    "email": "5pinky.jain@gmail.com"
 }
 ###
 
